@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tp_twitter/login-form-widget.dart';
 
-class TwitterContent extends StatelessWidget {
+class TwitterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -38,6 +39,19 @@ class TwitterContent extends StatelessWidget {
         ],),
       )
     ],
+    );
+  }
+
+}
+
+class TwitterContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TwitterLoginForm(),
+        TwitterCard(),
+      ],
     );
   }
 }
