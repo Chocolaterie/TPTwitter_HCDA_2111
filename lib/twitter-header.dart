@@ -23,9 +23,9 @@ class TwitterHeader extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         child: Row(
           children: [
-            TwitterHeaderButton("Nouveau"),
+            Expanded(child: IconButton(onPressed: () {}, icon: Align(alignment: Alignment.centerLeft, child: Image.asset("images/pencil.png")))),
             TwitterHeaderButton("Accueil", align: TextAlign.center,),
-            TwitterHeaderButton("Rechercher", align: TextAlign.right,)
+            Expanded(child: IconButton(onPressed: () {}, icon: Align(alignment: Alignment.centerRight, child: Image.asset("images/search.png")))),
           ],
         ),
       ),

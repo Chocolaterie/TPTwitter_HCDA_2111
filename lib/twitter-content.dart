@@ -29,12 +29,16 @@ class TwitterContent extends StatelessWidget {
         ],),
       ),
       // 3 Options
-      Row(children: [
-        Expanded(child: Text("Répondre", textAlign: TextAlign.center,)),
-        Expanded(child: Text("Retweet", textAlign: TextAlign.center,)),
-        Expanded(child: Text("Favoris", textAlign: TextAlign.center,)),
-      ],)
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(children: [
+          Expanded(child: IconButton(splashRadius: 25, onPressed: () {}, icon: Image.asset("images/reply.png"))),
+          Expanded(child: IconButton(splashRadius: 25, onPressed: () {}, icon: Image.asset("images/retweet.png"))),
+          Expanded(child: IconButton(splashRadius: 25, onPressed: () {}, icon: Image.asset("images/favorite.png"))),
+        ],),
+      )
     ],
     );
   }
 }
+
