@@ -85,7 +85,10 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
   void onSubmit() {
     // j'appel la validation du formulaire
     if (_formKey.currentState!.validate()){
-      showLoginSuccessDialog();
+      // deprecated
+      // showLoginSuccessDialog();
+      // j'ouvre la page twitter page
+      Navigator.pushNamed(context, "/twitter-page");
     }
   }
 

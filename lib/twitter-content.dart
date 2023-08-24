@@ -49,7 +49,6 @@ class TwitterContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TwitterLoginForm(),
         TwitterCard(),
       ],
     );
