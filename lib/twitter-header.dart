@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 class TwitterHeaderButton extends StatelessWidget {
 
@@ -24,7 +25,7 @@ class TwitterHeader extends StatelessWidget {
         child: Row(
           children: [
             Expanded(child: IconButton(onPressed: () {}, icon: Align(alignment: Alignment.centerLeft, child: Image.asset("images/pencil.png")))),
-            TwitterHeaderButton("Accueil", align: TextAlign.center,),
+            TwitterHeaderButton('label.home'.i18n(), align: TextAlign.center,),
             Expanded(child: IconButton(onPressed: () {}, icon: Align(alignment: Alignment.centerRight, child: Image.asset("images/search.png")))),
           ],
         ),

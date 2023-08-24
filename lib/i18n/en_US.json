@@ -1,0 +1,16 @@
+{
+  "error.password.length" : "Password must have at least 6 char length",
+  "error.password.empty" : "Password must be filled",
+  "error.email.notvalid": "Not valid email",
+  "message.login.success" : "You are logged with success",
+  "hint.email" : "Identifiant",
+  "hint.password" : "Password",
+  "label.remember.me": "Remember me",
+  "label.me" : "Me",
+  "label.messages" : "Messages",
+  "label.notification" : "Notification",
+  "label.thread" : "Thread",
+  "label.home": "Home",
+  "label.connection": "Connection",
+  "label.twitter.connection": "Twitter Connection"
+}

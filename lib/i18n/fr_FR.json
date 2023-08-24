@@ -1,0 +1,16 @@
+{
+  "error.password.length" : "Le mot de passe doit contenir au moins 6 caractères",
+  "error.password.empty" : "Le mot de passe doit être renseigné",
+  "error.email.notvalid": "Email invalide",
+  "message.login.success" : "Vous êtes connecté(e) avec succès !",
+  "hint.email" : "Identifiant",
+  "hint.password" : "Mot de passe",
+  "label.remember.me": "Mémoriser mes informations",
+  "label.me" : "Moi",
+  "label.messages" : "Messages",
+  "label.notification" : "Notification",
+  "label.thread" : "Fil",
+  "label.home": "Accueil",
+  "label.connection": "Connexion",
+  "label.twitter.connection": "Connexion à Twitter"
+}

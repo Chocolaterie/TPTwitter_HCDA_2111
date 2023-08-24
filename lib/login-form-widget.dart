@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:localization/localization.dart';
 
 /*
 var showPasswordButton = IconButton(
@@ -39,7 +40,7 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
   String? validateEmail(String? value) {
     // Si l'email n'est pas valide
     if (!EmailValidator.validate(value!)) {
-      return "Email invalide";
+      return 'error.email.notvalid'.i18n();
     }
     return null;
   }
@@ -50,11 +51,11 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
   String? validatePassword(String? value) {
     // Erreur 1 : Si vide
     if (value!.isEmpty) {
-      return "Le mot de passe doit être renseigné";
+      return 'error.password.empty'.i18n();
     }
     // Erreur 2 : Si < 6
     if (value!.length < 6) {
-      return "Le mot de passe doit contenir au moins 6 caractères";
+      return 'error.password.length'.i18n();
     }
 
     return null;
@@ -67,8 +68,8 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
     showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-              title: const Text('Connexion'),
-              content: const Text('Vous êtes connecté(e) avec succès !'),
+              title: Text('label.connection'.i18n()),
+              content: Text('message.login.success'.i18n()),
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.pop(context, 'OK'),
@@ -99,7 +100,7 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  "Connexion à Twitter",
+                  'label.twitter.connection'.i18n(),
                   style: TextStyle(
                       color: Colors.black54, fontWeight: FontWeight.bold),
                 ),
@@ -107,14 +108,14 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
               // Email
               TextFormField(
                 validator: validateEmail,
-                decoration: InputDecoration(hintText: "Identifiant"),
+                decoration: InputDecoration(hintText: 'hint.email'.i18n()),
               ),
               // Mot de passe
               TextFormField(
                 obscureText: hidePassword,
                 validator: validatePassword,
                 decoration: InputDecoration(
-                    hintText: "Mot de passe",
+                    hintText: 'hint.password'.i18n(),
                     suffixIcon: IconButton(
                       icon: Icon(
                         // Based on passwordVisible state choose the icon
@@ -138,7 +139,7 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
                           switchValue = value;
                         });
                       }),
-                  Text("Mémoriser mes informations",
+                  Text('label.remember.me'.i18n(),
                       style: TextStyle(color: Colors.black54))
                 ],
               ),
@@ -150,7 +151,7 @@ class _TwitterLoginFormState extends State<TwitterLoginForm> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Text("Connexion"),
+                        child: Text('label.connection'.i18n()),
                       )))
             ],
           )),

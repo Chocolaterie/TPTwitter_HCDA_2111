@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 class TwitterFooterButton extends StatelessWidget {
 
@@ -24,10 +25,10 @@ class TwitterFooter extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 25),
       child: Row(
         children: [
-          TwitterFooterButton("Fil", active: true,),
-          TwitterFooterButton("Notification"),
-          TwitterFooterButton("Messages"),
-          TwitterFooterButton("Moi"),
+          TwitterFooterButton('label.thread'.i18n(), active: true,),
+          TwitterFooterButton('label.notification'.i18n()),
+          TwitterFooterButton('label.messages'.i18n()),
+          TwitterFooterButton('label.me'.i18n()),
         ],
       ),
     );
