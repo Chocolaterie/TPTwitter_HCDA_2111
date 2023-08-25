@@ -1,7 +1,21 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:tp_twitter/login-form-widget.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
+
+import 'package:tp_twitter/tweet.dart';
 
 class TwitterCard extends StatelessWidget {
+  // Donnée tweet
+  Tweet tweet;
+
+  /**
+   * La donnée de la carte tweet
+   */
+  TwitterCard(this.tweet);
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -19,10 +33,10 @@ class TwitterCard extends StatelessWidget {
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Text("v.lechacal2023@eni.fr"),
+                      child: Text(tweet.author),
                     ),
                   ),
-                  Expanded(child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")),
+                  Expanded(child: Text(tweet.message)),
                 ],
               ),
             ),
@@ -44,12 +58,56 @@ class TwitterCard extends StatelessWidget {
 
 }
 
-class TwitterContent extends StatelessWidget {
+class TwitterContent extends StatefulWidget {
+
+  @override
+  State<TwitterContent> createState() => _TwitterContentState();
+}
+
+class _TwitterContentState extends State<TwitterContent> {
+  // j'ai une liste de vide de tweet
+  var tweets = [];
+
+  void onClickLoadTweet() async {
+    // J'appel l'api
+    var response = await http.get(Uri.parse("https://raw.githubusercontent.com/Chocolaterie/EniWebService/main/api/tweets.json"));
+
+    // Reponse OK
+    if (response.statusCode == 200){
+
+      // Stocker les données de la réponse en Json
+      var json = convert.jsonDecode(response.body);
+
+      // Appeler le setState pour rafraichir la vue en même
+      // temps que je met à jour les données
+      setState(() {
+        // Je convertis la liste des données JSON en Liste d'objet Tweet
+        tweets = json.map((tweetJson) => Tweet.fromJson(tweetJson)).toList();
+
+        log("Test");
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TwitterCard(),
+        // Le bouton (qui a un padding et prend tout le place en largeur)
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(onPressed: () { onClickLoadTweet(); }, child: Text("Charger les tweets"))),
+        ),
+        // La liste des tweets
+        Expanded(
+          child: ListView.builder(
+              itemCount: tweets.length,
+              itemBuilder: (BuildContext context, int index) {
+            return TwitterCard(tweets[index]);
+          }),
+        ),
       ],
     );
   }

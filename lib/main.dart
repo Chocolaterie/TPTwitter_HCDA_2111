@@ -28,7 +28,7 @@ class AppTwitter extends StatelessWidget {
         // delegate from localization package.
         LocalJsonLocalization.delegate,
       ],
-      initialRoute: "/",
+      initialRoute: "/twitter-page",
       routes: {
         "/" : (context) => TwitterLoginPage(),
         "/twitter-page" : (context) => TwitterPage()
